@@ -1,21 +1,18 @@
-import { useState } from 'react'
 import './App.css'
 
-function ImageGrid() {
-  const generateImages = (count: number) => {
-    const images = [];
-    for (let i = 1; i <= count; i++) {
-      const image = {
-        src: `https://picsum.photos/id/${i}/200/200`,
-        caption: `Image ${i}`
-      };
-      images.push(image);
-    }
-    return images;
-  };
+function generateImages(count: number) {
+  const images = [];
+  for (let i = 1; i <= count; i++) {
+    const image = {
+      src: `https://picsum.photos/id/${i}/200/200`,
+      caption: `Image ${i}`
+    };
+    images.push(image);
+  }
+  return images;
+}
 
-  const images = generateImages(25);
-
+function ImageGrid({ images }: { images: { src: string; caption: string }[] }) {
   return (
     <div className="image-grid">
       {images.map((image, index) => (
@@ -29,10 +26,12 @@ function ImageGrid() {
 }
 
 function App() {
+  const images = generateImages(25);
+
   return (
     <div className="App">
       <h1>Image Grid</h1>
-      <ImageGrid />
+      <ImageGrid images={images} />
     </div>
   );
 }
