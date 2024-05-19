@@ -1,9 +1,14 @@
 import './App.css'
 
-function generateImages(count: number) {
-  const images = [];
+type Image = {
+  src: string;
+  caption: string;
+};
+
+function generateImages(count: number): Image[] {
+  const images: Image[] = [];
   for (let i = 1; i <= count; i++) {
-    const image = {
+    const image: Image = {
       src: `https://picsum.photos/id/${i}/200/200`,
       caption: `Image ${i}`
     };
@@ -12,7 +17,7 @@ function generateImages(count: number) {
   return images;
 }
 
-function ImageGrid({ images }: { images: { src: string; caption: string }[] }) {
+function ImageGrid({ images }: { images: Image[] }) {
   return (
     <div className="image-grid">
       {images.map((image, index) => (
@@ -26,7 +31,7 @@ function ImageGrid({ images }: { images: { src: string; caption: string }[] }) {
 }
 
 function App() {
-  const images = generateImages(25);
+  const images = generateImages(5);
 
   return (
     <div className="App">
