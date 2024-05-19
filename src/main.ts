@@ -1,24 +1,20 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+const playerGrid = document.getElementById("playerGrid");
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const poshNames = [
+    "James Montgomery", "Elliott Fairfax", "Stan Remington", "Charlie Cavendish",
+    "Oliver Barrington", "Henry Alistair", "George Fitzwilliam", "William Beaufort",
+    "Edward Chadwick", "Arthur Pendragon", "Harry Lancaster", "Frederick Balmoral",
+    "Charles Windsor", "Hugh Grosvenor", "Alexander Mountbatten", "Sebastian Throckmorton",
+    "Rupert Fortescue", "Miles Rutherford", "Peregrine Cholmondeley", "Quentin Featherstonhaugh",
+    "Hugo St. John", "Guy de Vere", "Humphrey Marmaduke", "Julian Fitzroy", "Archiebald Sinclair"
+]; // Add more names if needed
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+for (let i = 1; i <= 25; i++) {
+    const playerDiv = document.createElement("div");
+    playerDiv.classList.add("player");
+    playerDiv.innerHTML = `
+        <img src="https://picsum.photos/id/${i}/200/200" alt="${poshNames[i - 1]}">
+        <p>${poshNames[i - 1]}</p>
+    `;
+    playerGrid.appendChild(playerDiv);
+}
