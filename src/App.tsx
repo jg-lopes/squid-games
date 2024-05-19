@@ -1,35 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function ImageGrid() {
+  const generateImages = (count: number) => {
+    const images = [];
+    for (let i = 1; i <= count; i++) {
+      const image = {
+        src: `https://picsum.photos/id/${i}/200/200`,
+        caption: `Image ${i}`
+      };
+      images.push(image);
+    }
+    return images;
+  };
+
+  const images = generateImages(25);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="image-grid">
+      {images.map((image, index) => (
+        <div key={index} className="image-container">
+          <img src={image.src} alt={image.caption} />
+          <p>{image.caption}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <div className="App">
+      <h1>Image Grid</h1>
+      <ImageGrid />
+    </div>
+  );
+}
+
+export default App;
