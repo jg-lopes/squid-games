@@ -7,14 +7,36 @@ const poshNames = [
     "Charles Windsor", "Hugh Grosvenor", "Alexander Mountbatten", "Sebastian Throckmorton",
     "Rupert Fortescue", "Miles Rutherford", "Peregrine Cholmondeley", "Quentin Featherstonhaugh",
     "Hugo St. John", "Guy de Vere", "Humphrey Marmaduke", "Julian Fitzroy", "Archiebald Sinclair"
-]; // Add more names if needed
+]; 
 
-for (let i = 1; i <= 25; i++) {
+// Track eliminated players
+const eliminatedPlayers: string[] = [];
+
+for (let i = 0; i < poshNames.length; i++) { 
     const playerDiv = document.createElement("div");
     playerDiv.classList.add("player");
     playerDiv.innerHTML = `
-        <img src="https://picsum.photos/id/${i}/200/200" alt="${poshNames[i - 1]}">
-        <p>${poshNames[i - 1]}</p>
+        <img src="https://picsum.photos/id/${i + 1}/200/200" alt="${poshNames[i]}">
+        <p>${poshNames[i]}</p>
     `;
-    playerGrid.appendChild(playerDiv);
+
+    // Add click event listener
+    playerDiv.addEventListener("click", () => {
+        const playerName = poshNames[i];
+
+        if (eliminatedPlayers.includes(playerName)) {
+            // If already eliminated, un-eliminate them
+            eliminatedPlayers.splice(eliminatedPlayers.indexOf(playerName), 1);
+            playerDiv.classList.remove("eliminated");
+        } else {
+            // If not eliminated, eliminate them
+            eliminatedPlayers.push(playerName);
+            playerDiv.classList.add("eliminated");
+        }
+
+        // (Optional) Update the game state or display a message here
+        console.log("Eliminated players:", eliminatedPlayers);
+    });
+
+    playerGrid?.appendChild(playerDiv); 
 }

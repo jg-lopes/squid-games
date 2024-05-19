@@ -1,49 +1,78 @@
 body {
-  font-family: 'SQUID GAME', 'Roboto', sans-serif; /* Use custom font first, then fallback */
+  font-family: 'Roboto', sans-serif;
   background-color: #141414;
   color: #ffffff;
-  line-height: 1.6; /* Improve readability */
-  text-align: center; /* Center align all body text */
+  line-height: 1.6;
+  text-align: center;
 }
 
 h1 {
-  font-size: 3.5em; /* Slightly larger */
-  margin: 30px 0; /* Increase margin for breathing room */
+  font-size: 3.5em;
+  margin: 30px 0;
   color: #ff4500;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Add subtle shadow */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
 #playerGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 90%; /* Make the grid more responsive */
-  margin: 40px auto; /* More margin top/bottom */
+  max-width: 90%;
+  margin: 40px auto;
 }
 
 .player {
   background-color: #282828;
-  padding: 25px; /* Slightly more padding */
-  border-radius: 4px; /* Softer corners */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Initial shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transform for hover effect */
+  padding: 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .player:hover {
-  /* transform: translateY(-5px); Lift on hover */
-  box-shadow: 0 8px 16px rgba(255, 3, 3, 0.3); /* Stronger shadow on hover */
+  box-shadow: 0 8px 16px rgba(255, 3, 3, 0.3);
 }
 
 .player img {
-  width: 100%; /* Make image responsive */
+  width: 100%;
   height: auto;
-  max-height: 200px; /* Limit image height */
-  object-fit: cover; /* Cover the container without distorting the image */
+  max-height: 200px;
+  object-fit: cover;
   margin-bottom: 1px;
   border-radius: 8px;
 }
 
 .player p {
   font-size: 1.3em;
-  margin-bottom: 0; /* Remove extra bottom margin */
+  margin-bottom: 0;
+}
+
+.player.eliminated { 
+  position: relative;
+  opacity: 0.5;
+}
+
+.player.eliminated img {
+  filter: grayscale(100%) brightness(0.8) blur(2px);
+}
+
+.player.eliminated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,0,0,0.3), rgba(0,0,0,0.5)); 
+  opacity: 0;        
+  transition: opacity 0.5s ease;
+}
+/* 
+.player.eliminated:hover::before {
+  opacity: 1;
+} */
+
+.player.eliminated p {
+  text-decoration: line-through;
+  color: #888;
 }
