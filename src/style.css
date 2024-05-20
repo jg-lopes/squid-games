@@ -14,12 +14,13 @@ h1 {
 }
 
 #playerGrid {
-  display: flex; /* Flexbox instead of grid */
-  flex-wrap: wrap; /* Allow items to wrap to new lines */
-  justify-content: center; /* Center items horizontally */
-  gap: 20px; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   width: 95%;
   margin: 40px auto;
+  align-items: flex-start; /* Key addition */
 }
 
 .player {
@@ -28,21 +29,22 @@ h1 {
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex: 1 1 240px; /* Grow and shrink, with a minimum width */
+  flex: 1 1 190px; /* Grow and shrink, with a minimum width */
+  max-width: 300px;
 }
+
 .player:hover {
   box-shadow: 0 8px 16px rgba(255, 3, 3, 0.3);
 }
 
 .player img {
-  width: 100%;
+  width: 100%; 
   height: auto;
-  max-height: 200px;
+  max-height: 200px; /* Adjust for desired aspect ratio */
   object-fit: cover;
   margin-bottom: 1px;
   border-radius: 8px;
 }
-
 .player p {
   font-size: 1.3em;
   margin-bottom: 0;
