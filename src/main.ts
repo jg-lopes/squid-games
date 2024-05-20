@@ -1,12 +1,12 @@
 const playerGrid = document.getElementById("playerGrid");
 
 const poshNames = [
-    "James Montgomery", "Elliott Fairfax", "Stan Remington", "Charlie Cavendish",
-    "Oliver Barrington", "Henry Alistair", "George Fitzwilliam", "William Beaufort",
-    "Edward Chadwick", "Arthur Pendragon", "Harry Lancaster", "Frederick Balmoral",
-    "Charles Windsor", "Hugh Grosvenor", "Alexander Mountbatten", "Sebastian Throckmorton",
-    "Rupert Fortescue", "Miles Rutherford", "Peregrine Cholmondeley", "Quentin Featherstonhaugh",
-    "Hugo St. John", "Guy de Vere", "Humphrey Marmaduke", "Julian Fitzroy", "Archiebald Sinclair"
+    "James", "Edmond", "Charles", "Vincent",
+    "Oliver", "Henry", "George", "William",
+    "Edward", "Arthur", "Harry Lancaster", "Frederick",
+    "Charles", "Hugh", "Alexander", "Sebastian",
+    "Rupert", "Miles", "Peregrine", "Quentin",
+    "Hugo", "Guy", "Humphrey", "Julian", "Archiebald"
 ]; 
 
 // Track eliminated players

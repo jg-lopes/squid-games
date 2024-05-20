@@ -16,21 +16,45 @@ h1 {
 #playerGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between; 
+  gap: 15px;
   width: 95%;
-  margin: 40px auto;
-  align-items: flex-start; /* Key addition */
+  margin: 20px auto;
+  align-items: flex-start;
 }
 
 .player {
   background-color: #282828;
-  padding: 25px;
+  padding: 20px;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex: 1 1 190px; /* Grow and shrink, with a minimum width */
-  max-width: 300px;
+  flex: 1 1 calc(15% - 15px); /* Two players per row by default */
+  box-sizing: border-box;
+  max-width: calc(20%); /* Limit max-width to prevent stretching */
+}
+
+/* ... (rest of the styles remain the same) */
+
+
+/* Media Query for iPhones in Portrait Mode */
+@media (max-width: 480px) {  
+  #playerGrid {
+      justify-content: center; /* Optional: Center if there's only one player */
+  }
+
+  .player {
+      flex: 1 1 calc(50% - 15px); /* Maintain two players per row */
+      max-width: calc(50% - 15px); /* Limit max-width to prevent stretching */
+  }
+}
+
+
+/* Media Query for Smaller Screens (but not iPhones in portrait) */
+@media (max-width: 768px) and (min-width: 481px) {  
+  .player {
+      flex: 1 1 100%; /* One player per row on other small screens */
+  }
 }
 
 .player:hover {
